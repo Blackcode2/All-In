@@ -13,7 +13,7 @@ struct HomeView: View {
             
             ScrollView {
                 VStack(spacing: 0){
-                    Text("Home View")
+                    
                 }
             }
             .scrollIndicators(.hidden)
@@ -43,5 +43,8 @@ struct HomeView: View {
                 
             }
         }
+        .appPadding()
+        .navigationTitle("홈")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

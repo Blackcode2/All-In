@@ -32,6 +32,7 @@ struct AllInApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabBarView()
+               
         }
     }
 }

@@ -19,8 +19,6 @@ struct MainTabBarView: View {
             // Home
             NavigationStack {
                 HomeView()
-                    .navigationTitle("Home View")
-                    .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem {
                 Image(systemName: "house")
