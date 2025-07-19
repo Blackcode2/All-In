@@ -36,7 +36,17 @@ struct MainTabBarView: View {
             }
             .tag(Tab.search)
             
-            //
+            // chat
+            NavigationStack {
+                Text("Chating")
+            }
+            .tabItem {
+                Image(systemName: "person.circle")
+                Text("Profile")
+            }
+            .tag(Tab.profile)
+            
+            // profile
             NavigationStack {
                 Text("Third")
             }
