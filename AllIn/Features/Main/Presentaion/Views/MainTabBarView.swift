@@ -28,11 +28,11 @@ struct MainTabBarView: View {
             
             //
             NavigationStack {
-                Text("Second")
+                ArchiveView()
             }
             .tabItem {
-                Image(systemName: "magnifyingglass")
-                Text("Search")
+                Image(systemName: "archivebox")
+                Text("Archive")
             }
             .tag(Tab.search)
             
@@ -41,8 +41,8 @@ struct MainTabBarView: View {
                 Text("Chating")
             }
             .tabItem {
-                Image(systemName: "person.circle")
-                Text("Profile")
+                Image(systemName: "message")
+                Text("Caht")
             }
             .tag(Tab.profile)
             
@@ -57,6 +57,7 @@ struct MainTabBarView: View {
             .tag(Tab.profile)
             
         }
+        
     
     }
 }

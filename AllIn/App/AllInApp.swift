@@ -18,7 +18,7 @@ struct AllInApp: App {
 //        // configureWithTransparentBackground() - 완전 투명(transparent) 배경을 설정
 //        appearance.backgroundColor = UIColor.systemBackground
         
-        
+        UITabBar.appearance().backgroundColor = .systemBackground
 //        UITabBar.appearance().tintColor = .red
 //        UITabBar.appearance().unselectedItemTintColor = .systemGray
 //        UITabBar.appearance().standardAppearance = appearance
@@ -32,7 +32,6 @@ struct AllInApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabBarView()
-               
         }
     }
 }

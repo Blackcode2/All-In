@@ -31,7 +31,7 @@ extension View {
         self.font(AppFont.custom(size, weight: .semiBold))
     }
     
-    func title3(_ size: CGFloat = 25) -> some View {
+    func title3(_ size: CGFloat = 22) -> some View {
         self.font(AppFont.custom(size, weight: .semiBold))
     }
     
