@@ -9,11 +9,22 @@ import SwiftUI
 
 
 struct CameraPhotoView: View {
+    @StateObject private var viewModel = CameraPhotoViewModel()
+    
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 20) {
+            
+            if let img = viewModel.capturedImage {
+                Image(uiImage: img)
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                Text("No photo yet")
+            }
+            
             Button(
                 action: {
-                    
+                    viewModel.openCamera()
                 }, label: {
                     HStack(spacing: 6){
                         Image(systemName: "camera")
@@ -29,6 +40,11 @@ struct CameraPhotoView: View {
             .background(Color.primary)
             .cornerRadius(8)
         }
+        .fullScreenCover(isPresented: $viewModel.isPresenting) {
+            ImagePicker(sourceType: .camera, image: $viewModel.capturedImage)
+                .ignoresSafeArea()
+            }
+        
     }
 }
 
