@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import AVKit
 
 struct CameraPhotoView: View {
     @StateObject private var viewModel = CameraPhotoViewModel()
@@ -18,6 +18,9 @@ struct CameraPhotoView: View {
                 Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
+            } else if let url = viewModel.capturedVideoURL {
+                VideoPlayer(player: AVPlayer(url: url))
+                    .frame(height: 300)
             } else {
                 Text("No photo yet")
             }
@@ -41,7 +44,7 @@ struct CameraPhotoView: View {
             .cornerRadius(8)
         }
         .fullScreenCover(isPresented: $viewModel.isPresenting) {
-            ImagePicker(sourceType: .camera, image: $viewModel.capturedImage)
+            ImagePicker(sourceType: .camera, capture: .both, image: $viewModel.capturedImage, videoURL: $viewModel.capturedVideoURL)
                 .ignoresSafeArea()
             }
         
