@@ -38,16 +38,57 @@ struct CameraPhotoView: View {
                     }
                 }
             )
+            .cameraButtonStyle()
+            
+            
+            Button(
+                action: {
+                    viewModel.openPhotoLibrary()
+                },
+                label: {
+                    HStack(spacing: 6){
+                        Image(systemName: "photo")
+                            .foregroundStyle(Color.white)
+                        Text("Photo")
+                            .body1()
+                            .foregroundStyle(Color.white)
+                    }
+                }
+            )
+            .cameraButtonStyle()
+            
+        }
+        .fullScreenCover(isPresented: $viewModel.isPresenting) {
+            ImagePicker(sourceType: .camera, capture: .both, image: $viewModel.capturedImage, videoURL: $viewModel.capturedVideoURL)
+                .ignoresSafeArea() // ignoreSafeArea 안하면 상하단에 배경색 따로 놀음
+        }
+        .sheet(isPresented: $viewModel.isPresentingLibrary) {
+            ImagePicker(
+                sourceType: .photoLibrary,
+                capture: .photo,
+                image: $viewModel.capturedImage,
+                videoURL: .constant(nil)
+            )
+        }
+        
+    }
+}
+
+
+fileprivate extension View {
+    func cameraButtonStyle() -> some View {
+        self.modifier(CameraButtonStyl())
+    }
+}
+
+
+fileprivate struct CameraButtonStyl: ViewModifier {
+    func body(content: Content) -> some View {
+        content
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .background(Color.primary)
             .cornerRadius(8)
-        }
-        .fullScreenCover(isPresented: $viewModel.isPresenting) {
-            ImagePicker(sourceType: .camera, capture: .both, image: $viewModel.capturedImage, videoURL: $viewModel.capturedVideoURL)
-                .ignoresSafeArea()
-            }
-        
     }
 }
 

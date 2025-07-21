@@ -14,11 +14,19 @@ final class CameraPhotoViewModel: ObservableObject {
     @Published var capturedImage: UIImage?
     @Published var capturedVideoURL: URL?
     @Published var isPresenting = false
+    @Published var isPresentingLibrary = false
 
     func openCamera() {
         isPresenting = true
     }
+    
+    func openPhotoLibrary() {
+        isPresentingLibrary = true
+    }
 }
+
+
+// MARK: Info.plist에서 Privacy - Camera Usage Description, Privacy - Microphone Usage Description 추가해줘야함
 
 /// UIKit의 UIImagePickerController를 SwiftUI에서 쓸 수 있게 해 주는 래퍼
 ///  UIKit의 UIImagePickerController 를 SwiftUI에서 쓰기 위해서 UIViewControllerRepresentable 프로토콜 구현
@@ -35,6 +43,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var videoURL: URL?
     /// 모달 닫힘 제어
     @Environment(\.dismiss) private var dismiss
+    
     
     // MARK: UIViewControllerRepresentable
     
