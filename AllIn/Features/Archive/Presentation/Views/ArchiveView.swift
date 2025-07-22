@@ -20,8 +20,13 @@ struct ArchiveView: View {
                             ArchiveCardView(title: "Camera&Photo", description: "Camera & Photo picker")
                         }
                             
+                        NavigationLink(){
+                            CustomCameraView()
+                        } label: {
+                            ArchiveCardView(title: "Custom Camera", description: "Custom camera test")
+                        }
                         
-                        ArchiveCardView(title: "test", description: "teste test teste teset")
+                        
                     }
                 }
 

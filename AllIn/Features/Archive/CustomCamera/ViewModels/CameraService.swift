@@ -26,7 +26,7 @@ class CameraService {
         checkPermission(completion: completion)
     }
     
-    private func checkPermission(completion: @escaping(Error?)->()){
+    private func checkPermission(completion: @escaping(Error?)->Void){
         
         // 비디오에 대한 승인 상태를 확인
         switch AVCaptureDevice.authorizationStatus(for: .video){
@@ -53,57 +53,37 @@ class CameraService {
     }
     
     // 카메라 설정
-    private func setupCamera(completion: @escaping(Error?)->()){
-        // 전체 적용 세션에 담기 위한 작업들
+    private func setupCamera(completion: @escaping (Error?) -> Void) {
         let session = AVCaptureSession()
-        // 기기 기본값이 존재하면 실행
-        if let device = AVCaptureDevice.default(for: .video){
-            do{
-                let input = try AVCaptureDeviceInput(device: device)
-                if session.canAddInput(input){
-                    session.addInput(input)
-                    /*
-                     입력 구성
-                     var inputs: [AVCaptureInput]
-                     캡처 세션에 미디어 데이터를 제공하는 입력입니다.
-                     func canAddInput(AVCaptureInput) -> Bool
-                     세션에 입력을 추가할 수 있는지 여부를 결정합니다.
-                     func addInput(AVCaptureInput)
-                     세션에 캡처 입력을 추가합니다.
-                     func removeInput(AVCaptureInput)
-                     세션에서 입력을 제거합니다.
-                     */
-                }
-                
-                if session.canAddOutput(output){
-                    session.addOutput(output)
-                    /*
-                     출력 구성
-                     var outputs: [AVCaptureOutput]
-                     캡처 세션이 데이터를 보내는 출력 대상입니다.
-                     func canAddOutput(AVCaptureOutput) -> Bool
-                     세션에 출력을 추가할 수 있는지 여부를 결정합니다.
-                     func addOutput(AVCaptureOutput)
-                     캡처 세션에 출력을 추가합니다.
-                     func removeOutput(AVCaptureOutput)
-                     캡처 세션에서 출력을 제거합니다.
-                     */
-                }
-                
-                
-                // previewLayer 의 크기를 설정
-                previewLayer.videoGravity = .resizeAspectFill
-                previewLayer.session = session
-                
-                // session을 실행시킨다.
-                session.startRunning()
-                // 전체 session에 담는다.
-                self.session = session
-                
-            }catch{
-                completion(error)
-            }
+        guard
+            let device = AVCaptureDevice.default(for: .video),
+            let input = try? AVCaptureDeviceInput(device: device),
+            session.canAddInput(input),
+            session.canAddOutput(output)
+        else {
+            completion(CameraError.configurationFailed)
+            return
         }
+        
+        session.addInput(input)
+        session.addOutput(output)
+        
+        previewLayer.session = session
+        previewLayer.videoGravity = .resizeAspectFill
+        
+        session.startRunning()
+        self.session = session
+        completion(nil)
     }
+    
+    enum CameraError: Error {
+        case noPermission, configurationFailed
+    }
+    
+    func capturePhoto(with settings : AVCapturePhotoSettings = AVCapturePhotoSettings()){
+        // 기본 셋팅과 대리인을 전달한다
+        output.capturePhoto(with: settings, delegate: delegate!)
+    }
+    // 카메라 버튼을 눌렀을때 실행되는 함수
     
 }
