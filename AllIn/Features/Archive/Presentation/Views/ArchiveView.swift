@@ -28,6 +28,21 @@ struct ArchiveView: View {
                         
                         
                     }
+                    
+                    GridRow{
+                        NavigationLink(){
+                            SegmentButtonView()
+                        } label: {
+                            ArchiveCardView(title: "Menu Button", description: "Several version of menu buttons")
+                        }
+                            
+                        NavigationLink(){
+                            
+                        } label: {
+                            ArchiveCardView(title: "Custom Camera", description: "Custom camera test")
+                        }
+                    }
+                    
                 }
 
             }
