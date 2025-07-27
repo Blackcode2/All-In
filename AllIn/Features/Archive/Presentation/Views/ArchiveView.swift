@@ -37,9 +37,9 @@ struct ArchiveView: View {
                         }
                             
                         NavigationLink(){
-                            
+                            MapView()
                         } label: {
-                            ArchiveCardView(title: "Custom Camera", description: "Custom camera test")
+                            ArchiveCardView(title: "Map", description: "Everything about map")
                         }
                     }
                     

@@ -114,7 +114,7 @@ struct CapsulSegmentButton: View {
                     label: {
                         Text(colors[idx])
                             .padding(.vertical, 8)
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity) // 없으면 텍스트 만큼의 최소 크기만 버튼이 차지하고 버튼 크기 제각각
                             .background(
                                 ZStack {
                                     if selectedColor == idx {
