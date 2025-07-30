@@ -8,9 +8,18 @@
 import SwiftUI
 
 
+enum NavigationTestRoute: Hashable {
+    case navigationTest
+    case second
+    case third
+}
+
 struct ArchiveView: View {
+    
+    @State private var path: NavigationPath = NavigationPath()
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $path){
             ScrollView{
                 Grid() {
                     GridRow{
@@ -19,7 +28,7 @@ struct ArchiveView: View {
                         } label: {
                             ArchiveCardView(title: "Camera&Photo", description: "Camera & Photo picker")
                         }
-                            
+                        
                         NavigationLink(){
                             CustomCameraView()
                         } label: {
@@ -35,7 +44,7 @@ struct ArchiveView: View {
                         } label: {
                             ArchiveCardView(title: "Menu Button", description: "Several version of menu buttons")
                         }
-                            
+                        
                         NavigationLink(){
                             MapView()
                         } label: {
@@ -43,12 +52,38 @@ struct ArchiveView: View {
                         }
                     }
                     
-                }
+                    GridRow{
 
+                        
+                        ArchiveCardView(title: "Navigation", description: "Navigation Test")
+                            .onTapGesture { path.append(NavigationTestRoute.navigationTest) }
+                        
+                        
+                    
+                        NavigationLink(){
+                            
+                        } label: {
+                            ArchiveCardView(title: "", description: "")
+                        }
+                    }
+                    
+                }
+                
             }
             .appPadding()
         }
         .background(Color.mainBackground.ignoresSafeArea())
+        .navigationDestination(for: NavigationTestRoute.self) { route in
+            switch route {
+            case .navigationTest:
+                NavigationTestView(path: $path)
+                    .toolbarVisibility(.hidden, for: .tabBar) // 이걸로 탭바 안나오게 가능
+            case .second:
+                SecondView(path: $path)
+            case .third:
+                ThirdView(path: $path)
+            }
+        }
     }
 }
 
@@ -95,3 +130,9 @@ fileprivate extension Color {
         )
     }
 }
+
+
+#Preview {
+    ArchiveView()
+}
+

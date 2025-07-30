@@ -187,3 +187,8 @@ fileprivate struct CategoryButtonStyle: ButtonStyle {
     }
     
 }
+
+
+#Preview {
+    HomeView()
+}
