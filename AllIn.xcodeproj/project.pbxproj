@@ -419,6 +419,8 @@
 				DEVELOPMENT_TEAM = 4JXC27SJKM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "블루투스 통신 권한";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "블루투스 기기 통신 권한";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permmision required for camera useage";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Permmision for location required";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱 사용 중에 위치 정보가 필요합니다.";
@@ -454,6 +456,8 @@
 				DEVELOPMENT_TEAM = 4JXC27SJKM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "블루투스 통신 권한";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "블루투스 기기 통신 권한";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permmision required for camera useage";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Permmision for location required";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "앱 사용 중에 위치 정보가 필요합니다.";

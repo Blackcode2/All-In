@@ -61,9 +61,9 @@ struct ArchiveView: View {
                         
                     
                         NavigationLink(){
-                            
+                           BlueToothView()
                         } label: {
-                            ArchiveCardView(title: "", description: "")
+                            ArchiveCardView(title: "BlueTooth", description: "BlueTooth Test")
                         }
                     }
                     
