@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CAC31042E4DC9F500A7B19B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0CAC31032E4DC9F500A7B19B /* Alamofire */; };
 		0CBCC9772E2914460094475A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0CBCC9762E2914460094475A /* .gitignore */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0C1932E72E4DC27D00598338 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0C6E34E02E280C200011DD00 /* AllIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6E34F02E280C220011DD00 /* AllInTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllInTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,9 +48,22 @@
 		0CBCC9762E2914460094475A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0C1930F52E4C638900598338 /* Exceptions for "AllIn" folder in "AllIn" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0C6E34DF2E280C200011DD00 /* AllIn */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0C6E34E22E280C200011DD00 /* AllIn */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0C1930F52E4C638900598338 /* Exceptions for "AllIn" folder in "AllIn" target */,
+			);
 			path = AllIn;
 			sourceTree = "<group>";
 		};
@@ -62,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CAC31042E4DC9F500A7B19B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +142,7 @@
 				0C6E34DC2E280C200011DD00 /* Sources */,
 				0C6E34DD2E280C200011DD00 /* Frameworks */,
 				0C6E34DE2E280C200011DD00 /* Resources */,
+				0C1932E72E4DC27D00598338 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,6 +154,7 @@
 			);
 			name = AllIn;
 			packageProductDependencies = (
+				0CAC31032E4DC9F500A7B19B /* Alamofire */,
 			);
 			productName = AllIn;
 			productReference = 0C6E34E02E280C200011DD00 /* AllIn.app */;
@@ -208,6 +238,9 @@
 			);
 			mainGroup = 0C6E34D72E280C200011DD00;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0CAC31022E4DC9F500A7B19B /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0C6E34E12E280C200011DD00 /* Products */;
 			projectDirPath = "";
@@ -419,6 +452,7 @@
 				DEVELOPMENT_TEAM = 4JXC27SJKM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AllIn/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "블루투스 통신 권한";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "블루투스 기기 통신 권한";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permmision required for camera useage";
@@ -456,6 +490,7 @@
 				DEVELOPMENT_TEAM = 4JXC27SJKM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AllIn/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "블루투스 통신 권한";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "블루투스 기기 통신 권한";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Permmision required for camera useage";
@@ -600,6 +635,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0CAC31022E4DC9F500A7B19B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0CAC31032E4DC9F500A7B19B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0CAC31022E4DC9F500A7B19B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0C6E34D82E280C200011DD00 /* Project object */;
 }
